@@ -11,13 +11,36 @@ export const profile = {
   cvHref: "/Sushila-Shrestha-CV.pdf",
 } as const;
 
-export const socialLinks = [
-  { label: "GitHub", href: "https://github.com/sushilashrestha" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sushilashrestha" },
-  { label: "Instagram", href: "https://www.instagram.com/__susshhh__/" },
-  { label: "Twitter", href: "https://twitter.com/_sushhi_" },
-  { label: "Facebook", href: "https://www.facebook.com/sushhi.01" },
-] as const;
+export type SocialIconName =
+  "github" | "linkedin" | "instagram" | "x" | "facebook";
+
+export const socialLinks: {
+  label: string;
+  icon: SocialIconName;
+  href: string;
+}[] = [
+  {
+    label: "GitHub",
+    icon: "github",
+    href: "https://github.com/sushilashrestha",
+  },
+  {
+    label: "LinkedIn",
+    icon: "linkedin",
+    href: "https://www.linkedin.com/in/sushilashrestha",
+  },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    href: "https://www.instagram.com/__susshhiii__/",
+  },
+  { label: "X (Twitter)", icon: "x", href: "https://twitter.com/_sushhi_" },
+  {
+    label: "Facebook",
+    icon: "facebook",
+    href: "https://www.facebook.com/sushhi.01",
+  },
+];
 
 export type SkillGroup = { label: string; skills: string[] };
 

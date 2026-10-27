@@ -44,8 +44,8 @@ export function PostcardForm({ recipient }: { recipient: string }) {
   }
 
   return (
-    <form className="mt-6" onSubmit={openDraft} aria-label="Write a message">
-      <div className="mb-5 flex flex-col gap-2">
+    <form className="mt-5" onSubmit={openDraft} aria-label="Write a message">
+      <div className="mb-4 flex flex-col gap-1.5">
         <label htmlFor={`${id}-email`} className="text-xs font-medium">
           Your email
         </label>
@@ -61,21 +61,21 @@ export function PostcardForm({ recipient }: { recipient: string }) {
           className={cn(fieldStyles, "leading-relaxed")}
         />
       </div>
-      <div className="mb-5 flex flex-col gap-2">
+      <div className="mb-4 flex flex-col gap-1.5">
         <label htmlFor={`${id}-message`} className="text-xs font-medium">
           Your message
         </label>
         <textarea
           id={`${id}-message`}
           name="message"
-          rows={4}
+          rows={3}
           placeholder="An idea, a project, or just a hello…"
           maxLength={4000}
           required
           onInput={clearFieldError}
           className={cn(
             fieldStyles,
-            "max-h-105 min-h-29 resize-y paper-postcard-lines pt-px leading-7",
+            "max-h-105 min-h-21 resize-y paper-postcard-lines pt-px leading-7",
           )}
         />
       </div>
