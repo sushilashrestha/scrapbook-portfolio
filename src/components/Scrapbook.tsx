@@ -13,8 +13,8 @@ export function Scrapbook() {
           <div className="hero-copy">
             <p className="hand hero-greeting">hello, internet. i&apos;m sushi!</p>
             <h1>A little code.<br />A lot of <em>heart.</em></h1>
-            <p className="hero-description">Frontend engineer, UI at heart.<br />Making thoughtful things for the web,<br className="desktop-break" /> one tiny detail at a time.</p>
-            <a className="ink-button" href="#work">Explore my work <span aria-hidden>↗</span></a>
+            <p className="hero-description">{profile.role}.<br/>Building production features with React<br className="desktop-break"/> and TypeScript, alongside a product team.</p>
+            <a className="ink-button" href="#work">Explore my work <span aria-hidden>↗︎</span></a>
           </div>
           <div className="hero-collage">
             <div className="keepsake-paper" aria-hidden="true" />

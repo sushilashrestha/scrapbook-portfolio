@@ -728,3 +728,5 @@
   .project-note-stack { font-size: 12px; }
   .scrap-nav .nav-cv { display: inline-flex; font-size: 19px; min-height: 36px; }
 }
+.signature .signature-heart { width: 23px; height: 25px; flex-shrink: 0; color: #866271; transform: rotate(-12deg); margin-left: 3px; align-self: center; }
+.scrapbook { font-variant-emoji: text; }

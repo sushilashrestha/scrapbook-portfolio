@@ -30,7 +30,7 @@ export function PostcardForm({ recipient }: { recipient: string }) {
         <label htmlFor={`${id}-message`}>Your message</label>
         <textarea id={`${id}-message`} name="message" rows={4} placeholder="An idea, a project, or just a hello…" maxLength={4000} required onInput={event => event.currentTarget.setCustomValidity("")} />
       </div>
-      <button className="ink-button" type="submit">Open email draft <span aria-hidden="true">↗</span></button>
+      <button className="ink-button" type="submit">Open email draft <span aria-hidden="true">↗︎</span></button>
     </form>
   );
 }

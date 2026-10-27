@@ -25,11 +25,11 @@ export function ProjectCollection({ preview = false }: { preview?: boolean }) {
             <p className="project-note-summary">{project.summary}</p>
             <p className="project-note-stack"><span className="hand">made with</span> {project.stack.join(" / ")}</p>
             {project.award && <p className="project-note-award">{project.award}</p>}
-            <span className="project-note-cta hand">take a closer look <span aria-hidden="true">↗</span></span>
+            <span className="project-note-cta hand">take a closer look <span aria-hidden="true">↗︎</span></span>
           </a>
         </article>)}
       </div>
     </ProjectTabs>
-    {!preview && <a className="text-link github-link" href="https://github.com/sushilashrestha" target="_blank" rel="noreferrer">More on GitHub ↗</a>}
+    {!preview && <a className="text-link github-link" href="https://github.com/sushilashrestha" target="_blank" rel="noreferrer">More on GitHub ↗︎</a>}
   </div>;
 }

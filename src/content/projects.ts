@@ -16,7 +16,7 @@ export const projects: Project[] = [
     noteLabel: "from my final year",
     title: "Tourist Attraction Recommender",
     summary:
-      "My final-year project: personalised recommendations for tourists, pairing Neural Collaborative Filtering with DistilBERT so it understands what places are actually like.",
+      "Built a personalised recommendation system using Neural Collaborative Filtering and DistilBERT, combining location descriptions with user ratings to predict tourist preferences.",
     stack: ["Python", "PyTorch", "NCF", "DistilBERT"],
     href: "https://github.com/Prashamsaaa/Tourist-Attraction-Recommendation-System",
   },
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     noteLabel: "a hackathon project",
     title: "JUNU voice assistant",
     summary:
-      "An AI voice assistant that helps citizens find their way through government office services. I built the frontend.",
+      "Developed the React frontend for an AI voice assistant that helps citizens navigate government services, building features to make those interactions easier.",
     stack: ["React", "AI", "Voice"],
     href: "https://github.com/Zdrlfx/fullstop",
     award: "AI track winner · Semicolon Hackathon",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     noteLabel: "an experiment with language",
     title: "Sentiment Analysis",
     summary:
-      "A transformer model that reads beauty-product reviews and works out how people really felt.",
+      "Built a transformer-based model to classify sentiment in beauty-product reviews, applying natural language processing to understand the review text.",
     stack: ["Python", "Transformers", "NLP"],
     href: "https://github.com/sushilashrestha/Sentiment-Analysis-Using-Transformer",
   },
@@ -47,9 +47,9 @@ export const projects: Project[] = [
     noteLabel: "built for Hult Prize at KhCE",
     title: "Hult Prize at KhCE",
     summary:
-      "A responsive event site with interactive navigation, tuned for both phones and desktops.",
+      "Designed and developed an event website with React and TypeScript, including interactive navigation and responsive layouts for mobile and desktop.",
     stack: ["React", "TypeScript", "Tailwind"],
-    href: "https://hultprize.khwopa.edu.np/",
+    href: "https://github.com/sushilashrestha/hultprizeatkhce",
   },
   {
     slug: "hack-the-circle",
@@ -57,9 +57,9 @@ export const projects: Project[] = [
     noteLabel: "made with the event team",
     title: "Hack The Circle",
     summary:
-      "The official hackathon website, built hand-in-hand with the designers to get every graphic just right.",
+      "Built the official hackathon website with React and Tailwind CSS, working with designers and the event team on interface requirements and site functionality.",
     stack: ["React", "Tailwind"],
-    href: "https://hackthecircle.khec.edu.np/",
+    href: "https://github.com/sushilashrestha/hackthewebsite",
   },
   {
     slug: "ar-treasure-hunt",
@@ -69,6 +69,6 @@ export const projects: Project[] = [
     summary:
       "A responsive, interactive website for an augmented-reality treasure hunt, shipped on a tight event deadline.",
     stack: ["React", "Tailwind"],
-    href: "https://arth24.tech/",
+    href: "https://github.com/sushilashrestha/theWebsite",
   },
 ];
