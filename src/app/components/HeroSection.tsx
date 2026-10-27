@@ -61,7 +61,7 @@ function HeroIntro() {
 
 function HeroCollage() {
   return (
-    <div className="relative isolate w-full pt-2.5 pb-28 motion-safe:animate-rise-late md:w-auto md:pt-2 md:pb-15">
+    <div className="relative isolate w-full pt-2.5 pb-44 motion-safe:animate-rise-late md:w-auto md:pt-2 md:pb-40">
       <div
         aria-hidden="true"
         className="absolute top-0 left-1/2 -z-10 h-74 w-56 max-w-full -translate-x-1/2 -rotate-7 border border-line bg-sand md:h-75 md:w-59 lg:h-84 lg:w-68"

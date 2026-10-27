@@ -13,7 +13,7 @@ const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: `${profile.name} — scrapbook`,
   description: profile.tagline,
-  icons: { icon: "/icon.jpg" },
+  icons: { icon: "/icon.png" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
