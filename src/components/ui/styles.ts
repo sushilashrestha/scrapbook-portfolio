@@ -7,7 +7,3 @@ export const inkButton = cn(
 export const textLink = cn(
   "inline-block border-b border-plum/45 pb-1 text-sm text-plum hover:border-dashed",
 );
-
-export const statusBadge = cn(
-  "inline-block rounded-xs border border-stitch bg-sheet px-2 py-1 text-xs text-muted",
-);

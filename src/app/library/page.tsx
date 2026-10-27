@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
-import { PersonalShelf } from "@/components/shelf/PersonalShelf";
-import { ShelfPageHeader } from "@/components/shelf/ShelfPageHeader";
-import { HeadlineEmphasis } from "@/components/ui/HeadlineEmphasis";
 import { PageSection } from "@/components/ui/PageSection";
-import { PressedLavender } from "@/components/ui/PressedLavender";
-import { books } from "@/constants/collections";
+import { books } from "@/constants/books";
+
+import { BookShelf } from "./components/BookShelf";
+import { LibraryHeader } from "./components/LibraryHeader";
 
 export const metadata: Metadata = {
   title: "Library | Sushi's scrapbook",
@@ -15,22 +14,9 @@ export const metadata: Metadata = {
 export default function LibraryPage() {
   return (
     <>
-      <ShelfPageHeader
-        title={
-          <>
-            A shelf full of <HeadlineEmphasis>possibilities.</HeadlineEmphasis>
-          </>
-        }
-        description="For stories to get lost in, ideas to sit with, and notes in the margins."
-        decoration={
-          <PressedLavender
-            sizes="80px"
-            className="h-28 w-15 rotate-12 opacity-80 md:mr-6 md:h-36 md:w-20"
-          />
-        }
-      />
+      <LibraryHeader />
       <PageSection>
-        <PersonalShelf entries={books} kind="books" />
+        <BookShelf books={books} />
       </PageSection>
     </>
   );

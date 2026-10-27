@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export type Project = {
   slug: string;
   category: "Web & interfaces" | "AI & experiments";
@@ -8,6 +10,7 @@ export type Project = {
   stack: string[];
   href: string;
   award?: string;
+  image?: StaticImageData;
 };
 
 export const projects: Project[] = [
