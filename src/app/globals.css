@@ -1,175 +1,175 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f6efe3;
-  --color-paper-dark: #1e1a16;
-  --color-card: #fffaf1;
-  --color-card-dark: #2b2520;
-  --color-ink: #2b2622;
-  --color-ink-soft: #6e6358;
-  --color-tape: #e9dcae;
+  --color-page: #eeeae2;
+  --color-sheet: #fbf8f1;
+  --color-pencil: #42433b;
+  --color-muted: #727367;
+  --color-plum: #866271;
+  --color-line: #d5cfc2;
+  --color-stitch: #c9bdae;
+  --color-tape: #c8bc9a;
+  --color-moss: #777e68;
+  --color-moss-deep: #5a624c;
+  --color-polaroid: #fffdf6;
 
-  --font-hand: var(--font-caveat);
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-dm-sans);
+  --color-sage: #e0e3d6;
+  --color-lilac: #e2dee7;
+  --color-blush: #e6dce1;
+  --color-sand: #e7e0d2;
+  --color-butter: #e7dfc6;
+  --color-peach: #efe0d4;
+
+  --color-jacket-sage: #69765e;
+  --color-jacket-lavender: #7f738c;
+  --color-jacket-rose: #a27d7f;
+
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  --animate-rise: rise 0.8s ease-out both;
+  --animate-rise-late: rise 0.9s 0.15s ease-out both;
+
+  --shadow-paper: 2px 5px 0 #e1dace;
+  --shadow-press: 1px 3px 0 var(--color-moss-deep);
+  --shadow-page-stack:
+    2px 7px 0 -2px #e8e2d5, 2px 8px 0 -2px #cac3b6, 6px 13px 0 -5px #f9f5eb,
+    6px 14px 0 -5px #d3ccbf;
+  --shadow-book:
+    inset 9px 0 #00000012, inset 12px 0 #ffffff17, 4px 0 0 #ece3d1,
+    7px 0 0 #c6bda9, 8px 6px 10px #463a2920;
+  --shadow-shelf: 0 6px 0 #b4a78e, 0 15px 16px -10px #59452c40;
 }
 
-/* Texture colours swap with the theme, so they live as plain vars
-   rather than dark: classes on every textured element. */
-:root {
-  --dot: rgb(43 38 34 / 0.12);
-  --rule: rgb(56 120 190 / 0.18);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --dot: rgb(246 239 227 / 0.08);
-    --rule: rgb(160 190 230 / 0.12);
+@utility paper-grain {
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23888888' filter='url(%23n)' opacity='.35' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
   }
 }
 
-@utility bg-dot-grid {
-  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-  background-size: 22px 22px;
+@utility paper-hero-grid {
+  background-image:
+    linear-gradient(rgb(148 165 156 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 165 156 / 7%) 1px, transparent 1px);
+  background-size: 25px 25px;
 }
 
-/* Notebook lines; 28px matches leading-7 so text sits on the rules. */
-@utility bg-ruled {
+@utility paper-note-grid {
+  background-image:
+    linear-gradient(#a7b4b324 1px, transparent 1px),
+    linear-gradient(90deg, #a7b4b324 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@utility paper-note-lines {
   background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0 27px,
-    var(--rule) 27px 28px
+    transparent 0 29px,
+    #a8b2aa29 29px 30px
   );
 }
 
-@utility edge-torn {
-  mask:
-    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
-    50% / 18px 100%;
+@utility paper-journal-lines {
+  background-image: repeating-linear-gradient(
+    transparent 0 31px,
+    #829d9e24 31px 32px
+  );
 }
 
-/* Zig-zag ends so the tape looks torn off the roll, not cut. */
-@utility tape-edges {
-  mask:
-    conic-gradient(from 45deg at left, #0000, #000 1deg 89deg, #0000 90deg)
-      left / 51% 8px repeat-y,
-    conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 90deg)
-      right / 51% 8px repeat-y;
+@utility paper-postcard-lines {
+  background-image: repeating-linear-gradient(
+    transparent 0 27px,
+    #bfb6a54d 27px 28px
+  );
 }
 
-/* ---------- Motion ---------- */
-
-@theme {
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  --animate-drop-in: drop-in 0.9s var(--ease-spring) both;
-  --animate-pop: pop 0.6s var(--ease-spring) both;
-  --animate-rise: rise 0.7s var(--ease-spring) both;
-  --animate-bob: bob 3.5s ease-in-out infinite;
-  --animate-wiggle: wiggle 0.45s ease-in-out;
+@utility clip-torn-tape {
+  clip-path: polygon(
+    2% 0,
+    100% 4%,
+    97% 28%,
+    100% 50%,
+    97% 78%,
+    99% 100%,
+    0 97%,
+    3% 73%,
+    0 48%,
+    3% 24%
+  );
 }
 
-/* Animations target `transform` and `opacity` only, so they compose with
-   the Tailwind `rotate-*` / `scale-*` classes (which use the individual
-   `rotate` / `scale` properties) instead of overwriting them. */
-@keyframes drop-in {
-  from {
-    opacity: 0;
-    transform: translateY(-60px) rotate(-14deg) scale(1.15);
+@utility clip-torn-bottom {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 97%,
+    94% 99%,
+    88% 97%,
+    81% 100%,
+    74% 98%,
+    67% 100%,
+    59% 97%,
+    51% 100%,
+    43% 98%,
+    35% 100%,
+    27% 97%,
+    19% 100%,
+    11% 98%,
+    4% 100%,
+    0 98%
+  );
+}
+
+@layer base {
+  body {
+    font-variant-emoji: text;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-plum);
+    outline-offset: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-}
+
 @keyframes rise {
   from {
     opacity: 0;
     transform: translateY(28px);
   }
 }
-@keyframes slap {
-  from {
-    opacity: 0;
-    transform: translateY(-16px) rotate(6deg) scale(1.12);
-  }
-}
-@keyframes stamp {
-  0% {
-    opacity: 0;
-    transform: scale(2.2) rotate(-20deg);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(0.92);
-  }
-}
-@keyframes bob {
-  50% {
-    transform: translateY(-8px);
-  }
-}
-@keyframes wiggle {
-  25% {
-    transform: rotate(3deg);
-  }
-  75% {
-    transform: rotate(-3deg);
-  }
-}
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
 
-@utility anim-delay-* {
-  animation-delay: calc(--value(integer) * 1ms);
-}
-
-/* Scroll reveals: RevealObserver adds [data-revealed] as each .reveal
-   element enters the viewport. Without JS the <noscript> in the layout
-   un-hides everything. */
 @media (prefers-reduced-motion: no-preference) {
   .reveal:not([data-revealed]) {
     opacity: 0;
   }
 
   .reveal[data-revealed] {
-    animation: var(--reveal-animation, rise) 0.75s var(--ease-spring) both;
-    animation-delay: calc(var(--stagger, 0) * 90ms);
-  }
-
-  .reveal-slap {
-    --reveal-animation: slap;
-  }
-  .reveal-pop {
-    --reveal-animation: pop;
-  }
-  .reveal-stamp {
-    --reveal-animation: stamp;
-  }
-
-  /* Siblings that enter together land one after another. */
-  .stagger > :nth-child(2) { --stagger: 1; }
-  .stagger > :nth-child(3) { --stagger: 2; }
-  .stagger > :nth-child(4) { --stagger: 3; }
-  .stagger > :nth-child(5) { --stagger: 4; }
-  .stagger > :nth-child(6) { --stagger: 5; }
-  .stagger > :nth-child(7) { --stagger: 6; }
-  .stagger > :nth-child(8) { --stagger: 7; }
-  .stagger > :nth-child(9) { --stagger: 8; }
-  .stagger > :nth-child(10) { --stagger: 9; }
-  .stagger > :nth-child(11) { --stagger: 10; }
-  .stagger > :nth-child(12) { --stagger: 11; }
-
-  .scribble path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-  }
-  .reveal[data-revealed] .scribble path {
-    animation: draw 0.9s ease-out 0.25s forwards;
+    animation: rise 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   }
 }
