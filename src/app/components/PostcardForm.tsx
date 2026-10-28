@@ -1,33 +1,30 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { useId } from "react";
-import { z } from "zod";
+import { useId, useState, useTransition } from "react";
 
 import { inkButton } from "@/components/ui/styles";
 import { cn } from "@/lib/utils";
 
-const postcardSchema = z.object({
-  email: z.email("Please enter a valid email address.").max(254),
-  message: z
-    .string()
-    .trim()
-    .min(1, "Please write a message before opening your draft.")
-    .max(4000),
-});
+import type { PostcardState } from "../postcardSchema";
+import { postcardSchema } from "../postcardSchema";
+import { sendPostcard } from "../sendPostcard";
+
+const initialState: PostcardState = { status: "idle" };
 
 const fieldStyles =
   "px-1 py-2.5 w-full min-w-0 text-base rounded-none border-0 border-b border-stitch bg-white/25 text-pencil placeholder:text-muted placeholder:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-plum md:text-sm";
 
-export function PostcardForm({ recipient }: { recipient: string }) {
+export function PostcardForm() {
   const id = useId();
+  const [state, setState] = useState(initialState);
+  const [isSending, startSending] = useTransition();
 
-  function openDraft(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const result = postcardSchema.safeParse(
-      Object.fromEntries(new FormData(form)),
-    );
+    const formData = new FormData(form);
+    const result = postcardSchema.safeParse(Object.fromEntries(formData));
 
     if (!result.success) {
       for (const issue of result.error.issues) {
@@ -37,14 +34,15 @@ export function PostcardForm({ recipient }: { recipient: string }) {
       return;
     }
 
-    const { email, message } = result.data;
-    const subject = encodeURIComponent(`Portfolio enquiry from ${email}`);
-    const body = encodeURIComponent(`Reply to: ${email}\r\n\r\n${message}`);
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    startSending(async () => {
+      const nextState = await sendPostcard(formData);
+      setState(nextState);
+      if (nextState.status === "sent") form.reset();
+    });
   }
 
   return (
-    <form className="mt-5" onSubmit={openDraft} aria-label="Write a message">
+    <form className="mt-5" onSubmit={handleSubmit} aria-label="Write a message">
       <div className="mb-4 flex flex-col gap-1.5">
         <label htmlFor={`${id}-email`} className="text-xs font-medium">
           Your email
@@ -79,11 +77,30 @@ export function PostcardForm({ recipient }: { recipient: string }) {
           )}
         />
       </div>
-      <button className={inkButton} type="submit">
-        Open email draft <span aria-hidden="true">↗︎</span>
+      <button
+        className={cn(inkButton, "disabled:cursor-wait disabled:opacity-70")}
+        type="submit"
+        disabled={isSending}
+      >
+        {isSending ? "Sending…" : "Send postcard"}{" "}
+        <span aria-hidden="true">↗︎</span>
       </button>
+      <p aria-live="polite" className="mt-3 text-xs text-muted">
+        {describeStatus(state)}
+      </p>
     </form>
   );
+}
+
+function describeStatus(state: PostcardState) {
+  switch (state.status) {
+    case "idle":
+      return "";
+    case "sent":
+      return "Thank you! Your note is on its way ♡";
+    case "failed":
+      return state.message;
+  }
 }
 
 function showFieldError(form: HTMLFormElement, name: string, message: string) {

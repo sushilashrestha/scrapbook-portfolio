@@ -37,7 +37,7 @@ export function ContactSection() {
           >
             {profile.email} ↗︎
           </a>
-          <PostcardForm recipient={profile.email} />
+          <PostcardForm />
         </div>
       </div>
     </PageSection>
