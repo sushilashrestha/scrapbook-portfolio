@@ -2,18 +2,68 @@ import type { StaticImageData } from "next/image";
 
 export type Project = {
   slug: string;
-  category: "Web & interfaces" | "AI & experiments";
+  category: "At work" | "Web & interfaces" | "AI & experiments";
   noteLabel: string;
   paper: "lined" | "grid" | "lilac" | "sage" | "peach";
   title: string;
   summary: string;
   stack: string[];
-  href: string;
+  href?: string;
   award?: string;
   image?: StaticImageData;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "content-sites",
+    paper: "peach",
+    category: "At work",
+    noteLabel: "dozens of pages, one design language",
+    title: "Content-driven websites",
+    summary:
+      "Built page by page from a shared set of sections, rendered with Server Components from a headless CMS and kept fresh with ISR and on-demand revalidation.",
+    stack: ["Next.js App Router", "Headless CMS", "ISR"],
+  },
+  {
+    slug: "feature-work",
+    paper: "grid",
+    category: "At work",
+    noteLabel: "features, end to end",
+    title: "Feature implementations",
+    summary:
+      "Shipped product features from design to release: multi-step creation flows, AI-assisted search with filters, review and approval workflows, and payment history with search and sorting.",
+    stack: ["React", "TanStack Start", "GraphQL", "Apollo Client"],
+  },
+  {
+    slug: "component-library",
+    paper: "lilac",
+    category: "At work",
+    noteLabel: "a shared component library",
+    title: "Reusable UI components",
+    summary:
+      "Accessible, composable components like a custom video player with seek previews, chapters and keyboard shortcuts, plus animated tabs, sidebars and cards, each documented in Storybook and tested.",
+    stack: ["Radix UI", "Storybook", "Vitest", "Tailwind"],
+  },
+  {
+    slug: "payments-integrations",
+    paper: "sage",
+    category: "At work",
+    noteLabel: "money and third-party APIs",
+    title: "Payments and integrations",
+    summary:
+      "A Stripe checkout that runs inside an iframe and talks to its host over postMessage, plus subscriptions and social logins.",
+    stack: ["Stripe Elements", "OAuth", "postMessage"],
+  },
+  {
+    slug: "cms-tools",
+    paper: "lined",
+    category: "At work",
+    noteLabel: "tools for the team",
+    title: "CMS and admin tooling",
+    summary:
+      "Content collections, custom form fields, branded HTML emails with a live preview, and hooks that turn form submissions into records.",
+    stack: ["Payload CMS", "TypeScript", "Unit tests"],
+  },
   {
     slug: "tourist-recommender",
     paper: "lined",

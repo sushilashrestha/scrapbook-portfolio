@@ -11,6 +11,7 @@ import { ProjectNote } from "./ProjectNote";
 const ALL_PROJECTS = "All projects";
 const categories = [
   ALL_PROJECTS,
+  "At work",
   "Web & interfaces",
   "AI & experiments",
 ] as const;
