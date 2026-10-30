@@ -14,7 +14,7 @@ export async function sendPostcard(formData: FormData): Promise<PostcardState> {
   if (!result.success) {
     return {
       status: "failed",
-      message: "Please check your email and message.",
+      message: "Please check your stamp, email and message.",
     };
   }
 
@@ -34,7 +34,7 @@ export async function sendPostcard(formData: FormData): Promise<PostcardState> {
       from: SENDER,
       to: profile.email,
       reply_to: postcard.email,
-      subject: `Portfolio enquiry from ${postcard.email}`,
+      subject: `A "${postcard.stamp}" postcard from ${postcard.email}`,
       html: renderPostcardEmail(postcard),
       text: renderPostcardText(postcard),
     }),

@@ -1,4 +1,4 @@
-type Postcard = { email: string; message: string };
+import type { Postcard } from "./postcardSchema";
 
 const colors = {
   page: "#eeeae2",
@@ -11,7 +11,8 @@ const colors = {
 
 const fontStack = "Georgia, 'Times New Roman', serif";
 
-export function renderPostcardEmail({ email, message }: Postcard) {
+export function renderPostcardEmail({ stamp, email, message }: Postcard) {
+  const safeStamp = escapeHtml(stamp);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\r?\n/g, "<br />");
 
@@ -24,7 +25,7 @@ export function renderPostcardEmail({ email, message }: Postcard) {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${colors.sheet};border:1px dashed ${colors.stitch};">
             <tr>
               <td style="padding:32px;">
-                <p style="margin:0 0 4px;font-size:22px;color:${colors.plum};">A new postcard ♡</p>
+                <p style="margin:0 0 4px;font-size:22px;color:${colors.plum};">A &ldquo;${safeStamp}&rdquo; postcard ♡</p>
                 <p style="margin:0 0 24px;font-size:14px;color:${colors.muted};">
                   from <a href="mailto:${safeEmail}" style="color:${colors.plum};">${safeEmail}</a>
                 </p>
@@ -40,8 +41,8 @@ export function renderPostcardEmail({ email, message }: Postcard) {
 </html>`;
 }
 
-export function renderPostcardText({ email, message }: Postcard) {
-  return `A new postcard from ${email}\n\n${message}\n\nHit reply to write back.`;
+export function renderPostcardText({ stamp, email, message }: Postcard) {
+  return `A "${stamp}" postcard from ${email}\n\n${message}\n\nHit reply to write back.`;
 }
 
 function escapeHtml(value: string) {

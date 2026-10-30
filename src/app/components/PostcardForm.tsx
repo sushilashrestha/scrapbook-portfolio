@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import type { PostcardState } from "../postcardSchema";
 import { postcardSchema } from "../postcardSchema";
 import { sendPostcard } from "../sendPostcard";
+import { StampPicker } from "./StampPicker";
 
 const initialState: PostcardState = { status: "idle" };
 
@@ -43,6 +44,7 @@ export function PostcardForm() {
 
   return (
     <form className="mt-5" onSubmit={handleSubmit} aria-label="Write a message">
+      <StampPicker />
       <div className="mb-4 flex flex-col gap-1.5">
         <label htmlFor={`${id}-email`} className="text-xs font-medium">
           Your email
